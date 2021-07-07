@@ -1,25 +1,27 @@
 let imgCaptions = [`01.jpg Hay Bales I love hay bales. Took this snap on a drive through the countryside past some straw fields.`, `02.jpg Lake The lake was so calm today. We had a great view of the snow on the mountains from here.`, `03.jpg Canyon I hiked to the top of the mountain and got this picture of the canyon and trees below.`, `04.jpg Iceberg It was amazing to see an iceberg up close, it was so cold but didn’t snow today.`, `05.jpg Desert The red cliffs were beautiful. It was really hot in the desert but we did a lot of walking through the canyons.`, `06.jpg Fall Fall is coming, I love when the leaves on the trees start to change color.`, `07.jpg Plantation I drove past this plantation yesterday, everything is so green!`, `08.jpg Dunes My summer vacation to the Oregon Coast. I love the sandy dunes!`, `09.jpg Countryside Lane We enjoyed a quiet stroll down this countryside lane.`, `10.jpg Sunset Sunset at the coast! The sky turned a lovely shade of orange.`, `11.jpg Cave I did a tour of a cave today and the view of the landscape below was breathtaking.`, `12.jpg Bluebells I walked through this meadow of bluebells and got a good view of the snow on the mountain before the fog came in.`];
 let html = '';
 
-function search_images() {
-    let input = document.getElementById('searchbar').value;
-    input = input.toLowerCase();
-    let search = document.getElementsByClassName('searchable');
-    for (i = 0; i < search.length; i++) {
-        if (!search[i].getAttribute('data-caption').toLowerCase().includes(input)) {
-            search[i].style.display="none";
+function match_search(database, term) {
+    for (i = 0; i < database.length; i++) {
+        if (!database[i].getAttribute('data-caption').toLowerCase().includes(term)) {
+            database[i].style.display="none";
          } else {
-             search[i].style.display="inline";
+             database[i].style.display="inline";
          }
     }
 }
 
+function search_images() {
+    let input = document.getElementById('searchbar').value;
+    input = input.toLowerCase();
+    let search = document.getElementsByClassName('searchable');
+    match_search(search, input);
+}
+
 for(let i = 1; i < imgCaptions.length + 1; i++) {
     let imgNum = i;
-    let placeholder = '';
-    if (imgNum < 10) {
-        placeholder = `0`;
-    } else { placeholder = ''; }
+    let placeholder = ''; 
+    if (imgNum < 10) { placeholder = `0`; } else { placeholder = ''; }
     html += `<a href="img/${placeholder}${imgNum}.jpg" data-caption="${imgCaptions[i - 1]}" class="searchable"><img src="img/thumbnails/${placeholder}${imgNum}.jpg" alt=${imgCaptions[i - 1]}</a>`;
 }
 
