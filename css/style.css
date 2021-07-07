@@ -568,5 +568,37 @@ template {
     transform: scale(1);
   }
 }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  height: 200px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 50px;
+}
+
+input {
+  width: 70%;
+  transition: width 0.5s;
+  padding: 15px;
+  margin-top: 40px;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+}
+input:focus {
+  width: 85%;
+}
+
+.search {
+  text-align: center;
+}
 
 /*# sourceMappingURL=style.css.map */
