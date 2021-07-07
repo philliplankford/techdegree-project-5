@@ -11,7 +11,6 @@ function search_images() {
          } else {
              search[i].style.display="inline";
          }
-
     }
 }
 

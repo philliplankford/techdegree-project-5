@@ -576,6 +576,7 @@ template {
 
 a {
   height: 200px;
+  margin: 0 auto;
 }
 
 .gallery {
@@ -587,7 +588,7 @@ a {
 
 input {
   width: 70%;
-  transition: width 0.5s;
+  transition: width 0.5s ease-in-out;
   padding: 15px;
   margin-top: 40px;
   font-family: sans-serif;
